@@ -1,3 +1,4 @@
+let logo = document.querySelectorAll(".logo");
 let timeContainer = document.querySelectorAll(".timeChoice");
 let time = document.querySelectorAll(".time");
 let start = document.querySelectorAll(".start");
@@ -10,8 +11,8 @@ let audio = document.querySelectorAll(".audio");
 
 let timeValue = 15;
 let colorTab = [["red","#ed4956"],["yellow","#fffc00"],["blue","#1d9bf0"],["green","#1ed760"]];
-let timer;
 let roundTimer;
+let timer;
 let points = 0;
 let helper = 0;
 
@@ -47,7 +48,9 @@ function prepare(){
 }
 
 start[0].addEventListener("click", _=>{
+    audio[2].play();
     prepare();
+    logo[0].style.visibility = "hidden";
     timeContainer[0].style.visibility = "hidden";
     start[0].style.visibility = "hidden";
     table[0].style.visibility = "hidden";
@@ -65,12 +68,12 @@ start[0].addEventListener("click", _=>{
             box[i].style.visibility = "hidden";
         }
         pointsSC[0].style.visibility = "hidden";
+        logo[0].style.visibility = "visible";
         timeContainer[0].style.visibility = "visible";
         start[0].style.visibility = "visible";
         table[0].style.visibility = "visible";
         score[helper].innerHTML = `${helper+1}. ${points}pkt ${timeValue}s`;
         points = 0;
-        pointsSC[0].innerHTML = points;
         helper++;
         if(helper == 5){
             helper = 0;
@@ -79,6 +82,7 @@ start[0].addEventListener("click", _=>{
 })
 
 time[0].addEventListener("click", _=>{
+    audio[2].play();
     timeValue = 15;
     time[0].style.border = "0.3vh solid #ffd700"
     for(let i=1;i<3;i++){
@@ -87,6 +91,7 @@ time[0].addEventListener("click", _=>{
 })
 
 time[1].addEventListener("click", _=>{
+    audio[2].play();
     timeValue = 30;
     time[1].style.border = "0.3vh solid #ffd700"
     time[0].style.border = "none"
@@ -94,6 +99,7 @@ time[1].addEventListener("click", _=>{
 })
 
 time[2].addEventListener("click", _=>{
+    audio[2].play();
     timeValue = 60;
     time[2].style.border = "0.3vh solid #ffd700"
     for(let i=0;i<2;i++){
